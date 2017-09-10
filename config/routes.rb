@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :notes
   resources :users
   resources :students
-  root to: "users#index"
+
+  root to: "notes#index"
 
   get 'permission', to: "notes#permission"
   post 'give_permission', to: "notes#give_permission"

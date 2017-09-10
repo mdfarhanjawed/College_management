@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910071904) do
+ActiveRecord::Schema.define(version: 20170910155638) do
 
   create_table "notes", force: :cascade do |t|
     t.string   "body"
@@ -31,9 +31,10 @@ ActiveRecord::Schema.define(version: 20170910071904) do
   create_table "permissions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "note_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "parent_id"
+    t.string   "ownership",  default: "owner"
     t.index ["note_id"], name: "index_permissions_on_note_id"
     t.index ["user_id"], name: "index_permissions_on_user_id"
   end
