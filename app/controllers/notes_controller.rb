@@ -4,7 +4,7 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    @notes = Note.where(user_id: current_user)
   end
 
   # GET /notes/1
@@ -14,12 +14,13 @@ class NotesController < ApplicationController
 
   def permission    
     @note = Note.find(params[:note_id])
+    @ownership = Permission.find_by(user_id: current_user, note_id: @note)
   end
 
   def give_permission    
     parent = Permission.find_by(user_id: current_user.id, note_id: params[:note_id])
     if parent.present?      
-      parent.children.create(user_id: params[:user], note_id: params[:note_id])
+      parent.children.create(user_id: params[:user], note_id: params[:note_id], ownership: params[:ownership])
     end
 
     redirect_to notes_path
@@ -100,6 +101,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:body, :user_id)
+      params.require(:note).permit(:body, :user_id, :ownership)
     end
 end

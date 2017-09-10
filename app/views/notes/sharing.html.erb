@@ -2,8 +2,15 @@
 	<% if @sharing %>
 		<strong>Note:</strong>
 		<% @sharing.map do |sharing| %>
-			<p><%= sharing.note.body %>
-			<%= link_to 'Permisson', permission_path(note_id: sharing.note.id) %></p>
+			<p><%= sharing.note.body %>	
+			<% if sharing.ownership == "update" %>		
+				<%= link_to 'Permisson', permission_path(note_id: sharing.note.id) %></p>
+				<%= link_to 'Edit', edit_note_path(sharing.note) %>
+			<% elsif sharing.ownership == "owner" %>
+				<%= link_to 'Permisson', permission_path(note_id: sharing.note.id) %></p>
+				<%= link_to 'Edit', edit_note_path(sharing.note) %>
+				<%= link_to 'Destroy', sharing.note, method: :delete, data: { confirm: 'Are you sure?' } %>
+			<% end %>
 		<% end %>
 	<% end %>
 </p>

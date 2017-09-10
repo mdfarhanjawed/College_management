@@ -1,5 +1,19 @@
 <%= form_tag give_permission_path,method: :post do %>
 	<%= select_tag "user", options_from_collection_for_select(User.all, "id", "name") %>
-	<%= hidden_field_tag :note_id, @note.id %>
+	<%= hidden_field_tag :note_id, @note.id %></br>
+
+	<% if @ownership.ownership == "owner" %>
+    	<% ownership=['owner', 'read', 'update'] %>
+    <% elsif  @ownership.ownership == "update" %>
+    	<% ownership=['update', 'read'] %>
+    <% else %>
+    	<% ownership=['read'] %>
+    <% end %>
+
+    <% ownership.each do |ownership| %>
+      <%= radio_button_tag :ownership,  ownership, class: "radio-style"  %>
+      <%= label_tag ownership %>
+    <% end %>
+
 	<%= submit_tag "Submit" %>
 <% end%>
