@@ -7,7 +7,7 @@
 				<%= link_to 'Permisson', permission_path(note_id: sharing.note.id) %></p>
 				<%= link_to 'Edit', edit_note_path(sharing.note) %>
 			<% elsif sharing.ownership == "owner" %>
-				<%= link_to 'Permisson', permission_path(note_id: sharing.note.id) %></p>
+				<%= link_to 'Share', permission_path(note_id: sharing.note.id) %></p>
 				<%= link_to 'Edit', edit_note_path(sharing.note) %>
 				<%= link_to 'Destroy', sharing.note, method: :delete, data: { confirm: 'Are you sure?' } %>
 			<% end %>

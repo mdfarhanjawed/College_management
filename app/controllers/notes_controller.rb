@@ -4,7 +4,11 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.where(user_id: current_user)
+    if params[:tags].present?
+      @notes = Note.where(user_id: current_user).tag_with(params[:tags])
+    else
+      @notes = Note.where(user_id: current_user)
+    end    
   end
 
   # GET /notes/1
@@ -101,6 +105,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:body, :user_id, :ownership)
+      params.require(:note).permit(:body, :user_id, :ownership, :all_tags)
     end
 end
