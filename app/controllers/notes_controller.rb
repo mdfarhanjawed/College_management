@@ -12,6 +12,35 @@ class NotesController < ApplicationController
   def show
   end
 
+  def permission    
+    @note = Note.find(params[:note_id])
+  end
+
+  def give_permission    
+    parent = Permission.find_by(user_id: current_user.id, note_id: params[:note_id])
+    if parent.present?      
+      parent.children.create(user_id: params[:user], note_id: params[:note_id])
+    end
+
+    redirect_to notes_path
+  end
+
+  def sharing
+    @sharing = Permission.where(user_id: current_user.id)
+  end
+
+  def shared_with
+    @shared_with = Permission.where(user_id: current_user.id).to_a
+  end
+
+  def permission_denied  
+    if params[:user_id].present?
+      Permission.find_by(user_id: params[:user_id], note_id: params[:note_id]).destroy  
+    end
+
+    redirect_to notes_path
+  end
+
   # GET /notes/new
   def new
     @note = Note.new(user_id: current_user.id)
@@ -29,6 +58,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
+        Permission.create(user_id: note_params[:user_id], note_id: @note.id)
         format.html { redirect_to @note, notice: 'Note was successfully created.' }
         format.json { render :show, status: :created, location: @note }
       else

@@ -1,0 +1,21 @@
+<h1>Note Shared By <%= current_user.name %></h1>
+<table>
+	<thead>
+		<th>Note:</th>
+		<th>Shared_with:</th>
+		<th>Delete:</th>		
+	</thead>
+	<tbody>
+		<% @shared_with.each do |shared| %>
+			<% if shared.children.present? %>
+				<% shared.children.each do |children| %>
+					<tr>
+						<td><%= children.note.body %></td>
+						<td><%= children.user.name %></td>
+						<td><%= link_to "Remove Sharing", permission_denied_path(user_id: children.user.id, note_id: children.note.id), method: :delete %></td>			
+					</tr>
+				<% end %>
+			<% end %>	
+		<% end %>	
+	</tbody>
+</table>

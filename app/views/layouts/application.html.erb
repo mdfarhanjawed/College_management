@@ -9,6 +9,13 @@
   </head>
 
   <body>
+  <% if current_user %>
+  	<%= link_to "logout", destroy_user_session_path, method: :delete %>
+    <%= link_to "Note", notes_path %>
+    <%= link_to "Sharing", sharing_path %>  
+    <%= link_to "Shared With", shared_with_path %>      
+    <%= current_user.name %> 
+  <% end %>
     <%= yield %>
   </body>
 </html>
