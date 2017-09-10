@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   get 'sharing', to: "notes#sharing"
   get 'shared_with', to: "notes#shared_with"
   delete 'permission_denied', to: 'notes#permission_denied'
+
+  get 'tags', to: "notes#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
