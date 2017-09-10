@@ -1,0 +1,5 @@
+<%= form_tag give_permission_path,method: :post do %>
+	<%= select_tag "user", options_from_collection_for_select(User.all, "id", "name") %>
+	<%= hidden_field_tag :note_id, @note.id %>
+	<%= submit_tag "Submit" %>
+<% end%>

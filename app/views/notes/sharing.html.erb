@@ -1,0 +1,9 @@
+<p>
+	<% if @sharing %>
+		<strong>Note:</strong>
+		<% @sharing.map do |sharing| %>
+			<p><%= sharing.note.body %>
+			<%= link_to 'Permisson', permission_path(note_id: sharing.note.id) %></p>
+		<% end %>
+	<% end %>
+</p>
