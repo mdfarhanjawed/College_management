@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <div class="row">
 	<div class="col-md-9">
 		<div class="main-note">
@@ -14,6 +13,10 @@
 			<p class="note-common">
 			  <strong class="body-note">Notes Created By:</strong>
 			  &nbsp;<%= @note.user.name || @note.user.email %>
+			</p>
+			<p class="note-common show-tags">
+			  <strong class="body-note">Tags</strong>
+				<p class="tags"><%= raw @note.all_tags.split(',').map { |tag| link_to tag, tags_path(tags: tag), class: "tags-style" }.join(', ') %></p>
 			</p>
 			<div class="common-edit"><%= link_to 'Edit', edit_note_path(@note), class: "btn btn-primary link-style" %></div>		
 			<div class="common-share "><%= link_to 'Share', permission_path(note_id: @note.id), class: "btn btn-warning link-style"%></div>	

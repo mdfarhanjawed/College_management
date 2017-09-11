@@ -180,3 +180,62 @@
 .access-denied {
 	left: 35px;
 }
+
+.tags-style {
+	background: #white none repeat scroll 0 0;
+  border: 1px #1a8cff solid ;
+  border-radius: 8px;
+  color: black !important;
+  padding: 4px;
+  text-decoration: none;
+}
+
+.tags a:hover {
+  text-decoration: none;
+	background: #1a8cff !important;
+	color: black;
+}
+
+.note-tags {
+	bottom: 43px;
+	left: 62px;
+  position: absolute;
+}
+
+.tags-style-index {
+	color: #1a8cff
+}
+
+.note-tags a:hover {
+	background: #1a8cff !important;
+}
+
+
+.tags {
+	display: inline-block;
+  margin-left: 0;
+  margin-top: 0;
+ }
+
+ .show-tags {
+ 		display: inline-block;
+    margin-left: 37px;
+    margin-top: 2px;
+ }
+
+
+.index-tags a:hover {
+	background: #1a8cff !important;
+	text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+

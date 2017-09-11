@@ -16,6 +16,16 @@
 						  <strong class="body-note">Notes Created By:</strong>
 						  &nbsp;<%= sharing.note.user.name || sharing.note.user.email %>
 						</p>
+						<% if sharing.parent %>
+							<p class="note-common">
+							  <strong class="body-note">Notes Shared By:</strong>
+							  &nbsp;<%= sharing.parent.note.user.name || sharing.parent.note.user.email %> 
+							</p>
+						<% end %>
+						<p class="note-common show-tags">
+						  <strong class="body-note">Tags</strong>
+						  <p class="tags"><%= raw sharing.note.all_tags.split(',').map { |tag| link_to tag, tags_path(tags: tag), class: "tags-style" }.join(', ') %></p>
+						</p>
 						<% if sharing.ownership == "update" %>		
 							<%= link_to 'Permisson', permission_path(note_id: sharing.note.id) %></p>
 							<%= link_to 'Edit', edit_note_path(sharing.note) %>
