@@ -16,6 +16,6 @@ class Note < ApplicationRecord
   end
 
   def self.tag_with(name)
-  	Tag.find_by(name: name).notes
+  	Tag.find_by(name: name).notes if Tag.find_by(name: name)
   end
 end

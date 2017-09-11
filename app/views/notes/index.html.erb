@@ -1,33 +1,34 @@
-<p id="notice"><%= notice %></p>
-
 <h1 class="all-note">All Notes</h1>
 <div class="row">
     <div class="col-md-10 col-md-offset-2">
-<table class="table table-striped table-hover">
-  <thead class="blue-grey lighten-4 table-head">
-    <tr>
-      <th>Body</th>
-      <th>Tags</th>
-      <th>User</th>
-      <th>Action</th>
-    </tr>
-  </thead>
+      <table class="table table-striped table-hover">
+        <thead class="blue-grey lighten-4 table-head">
+          <tr>
+            <th>Body</th>
+            <th>Tags</th>
+            <th>User</th>
+            <th>Action</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @notes.each do |note| %>
-      <tr>
-        <td><%= note.body %></td>
-        <td><%= raw note.all_tags.split(',').map { |tag| link_to tag, tags_path(tags: tag) }.join(', ') %></td>
-        <td><%= note.user.email %></td>
-        <td><%= link_to 'View & Share Notes', note, class: "btn btn-primary btn-sm link-style" %></td>
-        <td><%= link_to 'Edit', edit_note_path(note), class: "btn btn-info link-style" %></td>
-        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger link-style" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-</div>
+        <tbody>
+          <%if @notes %>
+            <% @notes.each do |note| %>
+              <tr>
+                <td><%= note.body %></td>
+                <td class="index-tags"><%= raw note.all_tags.split(',').map { |tag| link_to tag, tags_path(tags: tag), class: "tags-style-index" }.join(', ') %></td>
+                <td><%= note.user.email %></td>
+                <% if note.user == current_user%>
+                  <td><%= link_to 'View & Share Notes', note, class: "btn btn-primary btn-sm link-style" %></td>
+                  <td><%= link_to 'Edit', edit_note_path(note), class: "btn btn-info link-style" %></td>
+                  <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger link-style" %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    <br>
+  </div>
 </div>
 <%= link_to image_tag('plus.png', height: '50px', width: '50px'), new_note_path, class: "plus-style", title: "Add Notes"%>

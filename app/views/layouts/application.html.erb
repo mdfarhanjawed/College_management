@@ -33,7 +33,7 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav navbar-right">
               <% if current_user %>
-                <li id="name-style"><%= link_to "Hi, #{current_user.name}" , "", class: "navbar-brand", id: "name" %></li>                
+                <li id="name-style"><%= link_to "Hi! #{current_user.name}" , "", class: "navbar-brand", id: "name" %></li>                
                 <li> <%= link_to "Note", notes_path, class: "link-navigation" %></li>
                 <li><%= link_to "View Shared Notes", sharing_path, class: "link-navigation" %>  </li>
                 <li><%= link_to "Remove Access", shared_with_path, class: "link-navigation" %></li>

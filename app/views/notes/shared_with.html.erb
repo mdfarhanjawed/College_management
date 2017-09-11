@@ -15,11 +15,11 @@
 						  <p>&nbsp;<%= children.note.body %></p>
 						</p>
 						<p class="note-common">
-						  <strong class="body-note">Notes Created By:</strong>
+						  <strong class="body-note">Notes Shared With:</strong>
 						  &nbsp;<%= children.user.name || children.user.email %>
-						</p>							
-							<div class="common-share access-denied"><%= link_to "Remove Access", permission_denied_path(user_id: children.user.id, note_id: children.note.id), method: :delete, class: "btn btn-danger link-style" %></div>	
-							<td></td>			
+						</p>
+						<div class="common-share access-denied"><%= link_to "Remove Access", permission_denied_path(user_id: children.user.id, note_id: children.note.id), method: :delete, class: "btn btn-danger link-style" %></div>	
+						<td></td>			
 						</tr>
 						<hr class="horizontal-rule">
 					<% end %>
