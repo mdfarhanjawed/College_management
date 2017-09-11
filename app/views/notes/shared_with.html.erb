@@ -8,8 +8,7 @@
 
 			<% @shared_with.each do |shared| %>
 				<% if shared.children.present? %>
-					<% shared.children.each do |children| %>
-						
+					<% shared.children.each do |children| %>						
 						<p class="note-common">
 						  <strong class="body-note">What is on Your Mind ?</strong>
 						  <p>&nbsp;<%= children.note.body %></p>
@@ -17,6 +16,10 @@
 						<p class="note-common">
 						  <strong class="body-note">Notes Shared With:</strong>
 						  &nbsp;<%= children.user.name || children.user.email %>
+						</p>
+						<p class="note-common show-tags">
+						  <strong class="body-note">Tags</strong>
+						  <p class="tags"><%= raw children.note.all_tags.split(',').map { |tag| link_to tag, tags_path(tags: tag), class: "tags-style" }.join(', ') %></p>
 						</p>
 						<div class="common-share access-denied"><%= link_to "Remove Access", permission_denied_path(user_id: children.user.id, note_id: children.note.id), method: :delete, class: "btn btn-danger link-style" %></div>	
 						<td></td>			
