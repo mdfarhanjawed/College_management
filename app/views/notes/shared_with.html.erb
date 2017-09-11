@@ -1,21 +1,31 @@
-<h1>Note Shared By <%= current_user.name %></h1>
-<table>
-	<thead>
-		<th>Note:</th>
-		<th>Shared_with:</th>
-		<th>Delete:</th>		
-	</thead>
-	<tbody>
-		<% @shared_with.each do |shared| %>
-			<% if shared.children.present? %>
-				<% shared.children.each do |children| %>
-					<tr>
-						<td><%= children.note.body %></td>
-						<td><%= children.user.name %></td>
-						<td><%= link_to "Remove Sharing", permission_denied_path(user_id: children.user.id, note_id: children.note.id), method: :delete %></td>			
-					</tr>
-				<% end %>
-			<% end %>	
-		<% end %>	
-	</tbody>
-</table>
+<div class="row">
+	<div class="col-md-9">
+		<div class="main-note">
+			<div class="note-heading">
+				<h3 class="heading">Note Shared By <%= current_user.name %></h3>
+				<%= image_tag('notess.gif', height:' 30px', width: '30px')%>
+			</div>
+
+			<% @shared_with.each do |shared| %>
+				<% if shared.children.present? %>
+					<% shared.children.each do |children| %>
+						
+						<p class="note-common">
+						  <strong class="body-note">What is on Your Mind ?</strong>
+						  <p>&nbsp;<%= children.note.body %></p>
+						</p>
+						<p class="note-common">
+						  <strong class="body-note">Notes Created By:</strong>
+						  &nbsp;<%= children.user.name || children.user.email %>
+						</p>							
+							<div class="common-share access-denied"><%= link_to "Remove Access", permission_denied_path(user_id: children.user.id, note_id: children.note.id), method: :delete, class: "btn btn-danger link-style" %></div>	
+							<td></td>			
+						</tr>
+						<hr class="horizontal-rule">
+					<% end %>
+				<% end %>	
+			<% end %>
+		</div>
+	</div>
+</div>
+		

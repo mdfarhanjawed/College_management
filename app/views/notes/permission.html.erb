@@ -1,19 +1,51 @@
-<%= form_tag give_permission_path,method: :post do %>
-	<%= select_tag "user", options_from_collection_for_select(User.all, "id", "name") %>
-	<%= hidden_field_tag :note_id, @note.id %></br>
+<div class="row">
+    <div class="col-md-9">
+        <div class="main-note">
+            <div class="note-heading">
+                <h3 class="heading">Notes</h3>
+                <%= image_tag('notess.gif', height:' 30px', width: '30px')%>
+            </div>
+            <p class="note-common">
+              <strong class="body-note">What is on Your Mind ?</strong>
+              <p>&nbsp;<%= @note.body %></p>    
+            </p>
 
-	<% if @ownership.ownership == "owner" %>
-    	<% ownership=['owner', 'read', 'update'] %>
-    <% elsif  @ownership.ownership == "update" %>
-    	<% ownership=['update', 'read'] %>
-    <% else %>
-    	<% ownership=['read'] %>
-    <% end %>
+            <p class="note-common">
+              <strong class="body-note">Note Created BY:</strong>
+              &nbsp;<%= @note.user.name || @note.user.email %>
+            </p>
+            <div class="permission-form">
+                <%= form_tag give_permission_path,  :html => {class: "form-horizontal", role: "form"}, method: :post do %>
+                    <div>
+                        <p class="shared-to">
+                          <strong class="body-note">Note Shared to:</strong>               
+                        </p>
+                        <%= select_tag "user", options_from_collection_for_select(User.all, "id", "name"), class: "select-style selectpicker form-control" %>
+                        <%= hidden_field_tag :note_id, @note.id %></br>
+                    </div>
+                    <% if @ownership.ownership == "owner" %>
+                        <% ownership=['owner', 'read', 'update'] %>
+                    <% elsif  @ownership.ownership == "update" %>
+                        <% ownership=['update', 'read'] %>
+                    <% else %>
+                        <% ownership=['read'] %>
+                    <% end %>
+                    <div class="wrapper-permission">
+                        <p class="shared-to">
+                          <strong class="body-note">Please Select the Ownership:</strong>  
+                        </p>
+                        <div class="radio-style">
+                            <% ownership.each do |ownership| %>
+                              <%= radio_button_tag :ownership,  ownership %>
+                              <%= label_tag(ownership, nil, class: "commom-display-inline") %>
+                            <% end %>
+                        </div>
+                        <%= submit_tag "Share", class: "btn btn-primary permission-share" %>
+                    </div>  
+                <% end%> 
+            </div>           
+        </div>
+    </div>
+</div>
 
-    <% ownership.each do |ownership| %>
-      <%= radio_button_tag :ownership,  ownership, class: "radio-style"  %>
-      <%= label_tag ownership %>
-    <% end %>
 
-	<%= submit_tag "Submit" %>
-<% end%>
