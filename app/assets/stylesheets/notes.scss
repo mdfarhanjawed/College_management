@@ -229,10 +229,36 @@
 	text-decoration: none;
 }
 
+.jumbotron {
+  background-image: asset-url('photo.jpeg');
+  background-size: cover;
+  height: 600px; 
+}
 
+.condition-sign {
+  margin-bottom: 0px !important;
+}
 
+.home_page {
+  color: black !important;
+  padding-top:50px;  
+  font: 400 100px/1.3 'Lobster Two', Helvetica, sans-serif;
+  color: #2b2b2b;
+  text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);
 
+}
 
+.home-page-design {
+  float: right;
+  position: relative;
+  right: 370px;
+  font-size: 25px;
+  top: 134px;
+}
+
+.signup-link {
+  margin-left: 90px;  
+}
 
 
 
