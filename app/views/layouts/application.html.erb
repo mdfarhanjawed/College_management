@@ -1,21 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>CollegeManagement</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.css">
+
+    <title><%= content_for?(:title) ? yield(:title) : "CollegeManagement" %></title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= stylesheet_link_tag "application", :media => "all" %>
 
+
+    <%= javascript_include_tag "application" %>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
+    <![endif]-->
+  </head>
   <body>
-  <% if current_user %>
-  	<%= link_to "logout", destroy_user_session_path, method: :delete %>
-    <%= link_to "Note", notes_path %>
-    <%= link_to "Notes Available For Sharing", sharing_path %>  
-    <%= link_to "Shared With", shared_with_path %>      
-    <%= current_user.name %> 
-  <% end %>
-    <%= yield %>
+
+    <div class="navbar navbar-default navbar-static-top navbar-inverse">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to image_tag('OneNoteICO.png', id: "logo"), root_path %>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <% if current_user %>
+                <li id="name-style"><%= link_to "Hi, #{current_user.name}" , "", class: "navbar-brand", id: "name" %></li>                
+                <li> <%= link_to "Note", notes_path, class: "link-navigation" %></li>
+                <li><%= link_to "Notes Available For Sharing", sharing_path, class: "link-navigation" %>  </li>
+                <li><%= link_to "Shared With", shared_with_path, class: "link-navigation" %></li>
+                <li><%= link_to "logout", destroy_user_session_path, method: :delete, class: "link-navigation" %></li> 
+              <% else %>
+                <li><%= link_to "Login", new_user_session_path, class: "link-navigation" %></li>
+                <li><%= link_to "Signup", new_user_registration_path, class: "link-navigation" %></li>
+              <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>        
+      </div><!--/row-->
+
+      <footer>
+        <p>&copy; Company 2017</p>
+      </footer>
+
+    </div> <!-- /container -->
+
   </body>
 </html>

@@ -1,3 +1,96 @@
 // Place all the styles related to the notes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#logo {
+  height: 51px;
+  position: absolute;
+  width: 60px;
+}
+
+#name {
+  font-size: 1.3em;
+  color: #e85f1c;
+  font-weight: bold;
+  position: relative;
+  bottom: 5px;
+}
+
+.create-note {
+	height: 103px;
+  width: 124px;
+}
+
+#name-style {
+	border: 2px solid;
+  color: #e85f1c;
+  height: 42px;
+  margin-top: 4px;
+	padding-left: 12px;
+	border-radius: 25px;
+}
+
+.link-navigation {	
+	font-family: Libre Baskerville;
+  float: right;
+  font-size: 1.2em;
+  color: white !important;
+  letter-spacing:-1px; 
+}
+
+.main-note {
+	background: white none repeat scroll 0 0;
+	border: 1px dashed green;
+	height: auto;
+  width: auto;
+  border-top: 0 none;
+  left: 210px;
+  position: relative;
+  border-radius: 20px;
+}
+
+.note-heading {
+	background: #b3d1ff none repeat scroll 0 0;
+  text-align: center;
+  height: 59px;
+  border: 1px dashed;
+}
+
+.heading {
+	position: relative;
+  top: -6px;
+  display: inline-block;
+}
+
+.note-common {
+	overflow-wrap: break-word;
+	font-size: 13px;
+  font-style: italic;		
+}
+
+.body-note {
+	color: #1a8cff;
+  font-family: Droid Sans;
+  font-size: 16px;
+  border: 1px solid;
+  border-radius: 13px;
+  padding: 7px;
+}
+
+.common-edit {
+	padding-bottom: 10px;
+	left: 38px;
+  position: relative;
+	display: inline-block;
+	background: #FC39C12x;
+}
+
+.common-share {
+	display: inline-block;
+	left: 55px;
+  position: relative;
+}
+
+.link-style {
+	color: white !important;
+} 
