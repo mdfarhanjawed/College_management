@@ -7,12 +7,12 @@
 				<%= image_tag('notess.gif', height:' 30px', width: '30px')%>
 			</div>
 			<p class="note-common">
-			  <strong class="body-note">What is on Your Mind ?:</strong>
-			  &nbsp;<%= @note.body %>
+			  <strong class="body-note">What is on Your Mind ?</strong>
+			  <p>&nbsp;<%= @note.body %></p>
 			</p>
 
 			<p class="note-common">
-			  <strong class="body-note">User:</strong>
+			  <strong class="body-note">Notes Created By:</strong>
 			  &nbsp;<%= @note.user.name || @note.user.email %>
 			</p>
 			<div class="common-edit"><%= link_to 'Edit', edit_note_path(@note), class: "btn btn-primary link-style" %></div>		

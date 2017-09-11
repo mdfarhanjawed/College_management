@@ -2,6 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.commom-style-all {
+	display: block;
+}
+
+.link-style {
+	color: white !important;
+} 
+
+.commom-display-inline {
+	display: inline-block;
+}
+
+.horizontal-rule {
+	border-top: 1.5px dashed green;
+}
+
 #logo {
   height: 51px;
   position: absolute;
@@ -56,6 +72,33 @@
   border: 1px dashed;
 }
 
+.select-style {
+	width: 20%;
+	bottom: 7px;
+  left: 14px;
+  position: relative;
+}
+
+.radio-style {
+	display: inline-block;
+	position: relative;
+	left: 10px;
+}
+
+.edit-style {
+	left: 95px !important;
+}
+
+.edit-image {
+	float: left;
+}
+
+.plus-style {
+	float: right;
+  position: relative;
+  right: 33px;
+}
+
 .heading {
 	position: relative;
   top: -6px;
@@ -67,6 +110,10 @@
 	font-size: 13px;
   font-style: italic;		
 }
+.table-head {
+	color: #1a8cff;
+  font-size: 16px;
+}
 
 .body-note {
 	color: #1a8cff;
@@ -75,6 +122,18 @@
   border: 1px solid;
   border-radius: 13px;
   padding: 7px;
+}
+
+.all-note {
+	color: #1a8cff;
+  font-family: Droid Sans;
+  font-size: 20px;
+  border: 1px solid;
+  border-radius: 13px;
+  padding: 10px;
+  display: inline-block;
+  position: relative;
+  left: 140px;
 }
 
 .common-edit {
@@ -91,6 +150,33 @@
   position: relative;
 }
 
-.link-style {
-	color: white !important;
-} 
+.permission-form {
+	left: 36px;
+  position: relative;
+  width: 87%;
+}
+
+.permission-share {
+	display: block;
+  margin: 10px 0;
+  float: right;
+}
+
+.shared-to {
+	float: left;
+	deiplay: inline-block;
+	margin: 0px;
+
+}
+
+.wrapper-permission {
+	height: 50px
+}
+
+.danger-style {
+	left: 72px;
+}
+
+.access-denied {
+	left: 35px;
+}

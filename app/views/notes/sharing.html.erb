@@ -1,16 +1,37 @@
-<p>
-	<% if @sharing %>
-		<strong>Note:</strong>
-		<% @sharing.map do |sharing| %>
-			<p><%= sharing.note.body %>	
-			<% if sharing.ownership == "update" %>		
-				<%= link_to 'Permisson', permission_path(note_id: sharing.note.id) %></p>
-				<%= link_to 'Edit', edit_note_path(sharing.note) %>
-			<% elsif sharing.ownership == "owner" %>
-				<%= link_to 'Share', permission_path(note_id: sharing.note.id) %></p>
-				<%= link_to 'Edit', edit_note_path(sharing.note) %>
-				<%= link_to 'Destroy', sharing.note, method: :delete, data: { confirm: 'Are you sure?' } %>
-			<% end %>
-		<% end %>
-	<% end %>
-</p>
+<div class="row">
+	<div class="col-md-9">
+		<div class="main-note">
+			<div class="note-heading">
+				<h3 class="heading">Notes Shared by Your Friend</h3>
+				<%= image_tag('notess.gif', height:' 30px', width: '30px')%>
+			</div>
+				<p>
+				<% if @sharing %>
+					<% @sharing.map do |sharing| %>
+						<p class="note-common">
+			  				<strong class="body-note">What is on Your Mind ?</strong>
+			  				<p>&nbsp;<%= sharing.note.body %></p>
+						</p>	
+						<p class="note-common">
+						  <strong class="body-note">Notes Created By:</strong>
+						  &nbsp;<%= sharing.note.user.name || sharing.note.user.email %>
+						</p>
+						<% if sharing.ownership == "update" %>		
+							<%= link_to 'Permisson', permission_path(note_id: sharing.note.id) %></p>
+							<%= link_to 'Edit', edit_note_path(sharing.note) %>
+						<% elsif sharing.ownership == "owner" %>
+							<div class="common-edit"><%= link_to 'Edit', edit_note_path(sharing.note), class: "btn btn-primary link-style" %></div>		
+							<div class="common-share "><%= link_to 'Share', permission_path(note_id: sharing.note.id), class: "btn btn-warning link-style"%></div>
+							<div class="common-share danger-style">
+								<%= link_to 'Destroy Note', sharing.note, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger link-style " %>
+							</div>
+							<hr class="horizontal-rule">
+						<% end %>
+					<% end %>
+				<% end %>
+			</p>
+		</div>
+	</div>
+</div>
+
+		
