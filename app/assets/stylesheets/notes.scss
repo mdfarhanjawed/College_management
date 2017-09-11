@@ -229,10 +229,32 @@
 	text-decoration: none;
 }
 
+.jumbotron {
+  background-image: asset-url('photo.jpeg');
+  background-size: cover;
+  height: 600px; 
+}
 
+.condition-sign {
+  margin-bottom: 0px !important;
+}
 
+.home_page {
+  color: black !important;
+  padding-top:50px
+  aligin
+}
 
+.home-page-design {
+  float: right;
+  position: relative;
+  right: 325px;
+  top: 134px;
+}
 
+.signup-link {
+  margin-left: 90px;  
+}
 
 
 

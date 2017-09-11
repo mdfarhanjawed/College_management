@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :notes
   resources :users
-  resources :students
 
-  root to: "notes#index"
+  root to: "homes#landing"
 
   get 'permission', to: "notes#permission"
   post 'give_permission', to: "notes#give_permission"
@@ -13,5 +12,6 @@ Rails.application.routes.draw do
   delete 'permission_denied', to: 'notes#permission_denied'
 
   get 'tags', to: "notes#index"
+  get 'landing', to: "homes#landing"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
