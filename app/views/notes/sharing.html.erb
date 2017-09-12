@@ -8,6 +8,7 @@
 				<p>
 				<% if @sharing %>
 					<% @sharing.map do |sharing| %>
+
 						<p class="note-common">
 			  				<strong class="body-note">What is on Your Mind ?</strong>
 			  				<p>&nbsp;<%= sharing.note.body %></p>
@@ -16,27 +17,32 @@
 						  <strong class="body-note">Notes Created By:</strong>
 						  &nbsp;<%= sharing.note.user.name || sharing.note.user.email %>
 						</p>
+
 						<% if sharing.parent %>
 							<p class="note-common">
 							  <strong class="body-note">Notes Shared By:</strong>
 							  &nbsp;<%= sharing.parent.user.name || sharing.parent.note.user.email %> 
 							</p>
 						<% end %>
+
 						<p class="note-common show-tags">
 						  <strong class="body-note">Tags</strong>
 						  <p class="tags"><%= raw sharing.note.all_tags.split(',').map { |tag| link_to tag, tags_path(tags: tag), class: "tags-style" }.join(', ') %></p>
 						</p>
+
 						<% if sharing.ownership == "update" %>		
-							<%= link_to 'Permisson', permission_path(note_id: sharing.note.id) %></p>
-							<%= link_to 'Edit', edit_note_path(sharing.note) %>
+							<div class="common-share left-space"><%= link_to 'Share', permission_path(note_id: sharing.note.id), class: "btn btn-warning link-style"%></div>
+							<div class="common-edit"><%= link_to 'Edit', edit_note_path(sharing.note), class: "btn btn-primary link-style" %></div>
+
 						<% elsif sharing.ownership == "owner" %>
 							<div class="common-edit"><%= link_to 'Edit', edit_note_path(sharing.note), class: "btn btn-primary link-style" %></div>		
-							<div class="common-share "><%= link_to 'Share', permission_path(note_id: sharing.note.id), class: "btn btn-warning link-style"%></div>
+							<div class="common-share"><%= link_to 'Share', permission_path(note_id: sharing.note.id), class: "btn btn-warning link-style"%></div>
 							<div class="common-share danger-style">
 								<%= link_to 'Destroy Note', sharing.note, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger link-style " %>
-							</div>
-							<hr class="horizontal-rule">
+							</div>							
 						<% end %>
+
+						<hr class="horizontal-rule">
 					<% end %>
 				<% end %>
 			</p>
