@@ -19,7 +19,7 @@
 						<% if sharing.parent %>
 							<p class="note-common">
 							  <strong class="body-note">Notes Shared By:</strong>
-							  &nbsp;<%= sharing.parent.note.user.name || sharing.parent.note.user.email %> 
+							  &nbsp;<%= sharing.parent.user.name || sharing.parent.note.user.email %> 
 							</p>
 						<% end %>
 						<p class="note-common show-tags">
