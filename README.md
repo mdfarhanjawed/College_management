@@ -1,24 +1,27 @@
-# README
+Rails Application to Share Note among your friends and Add Tags to your note.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Install Dependencies
 
-Things you may want to cover:
+->  To install dependencies run below command:
 
-* Ruby version
+->  $ bundle install
 
-* System dependencies
+For Creating Database
 
-* Configuration
+->  $ rake db:create
 
-* Database creation
+For Running the Migration
 
-* Database initialization
+-> $ rake db:migrate    
 
-* How to run the test suite
+To start the application
 
-* Services (job queues, cache servers, search engines, etc.)
+In development mode
 
-* Deployment instructions
+->  $ DATABASE_USERNAME=<username> DATABASE_PASSWORD=<password> 
+->  rails s
 
-* ...
+To check the live Version of the app, Please go to:
+
+->  https://secure-citadel-88463.herokuapp.com/
+
