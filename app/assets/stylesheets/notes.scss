@@ -18,6 +18,16 @@
 	border-top: 1.5px dashed green;
 }
 
+.col-centered{
+float: none;
+margin: 10px auto;
+}
+
+.panel-heading {
+  background: black none repeat scroll 0 0 !important;
+  color: white !important;
+}
+
 #logo {
   height: 51px;
   position: absolute;
