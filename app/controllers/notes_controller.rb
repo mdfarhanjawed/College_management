@@ -25,8 +25,9 @@ class NotesController < ApplicationController
     parent = Permission.find_by(user_id: current_user.id, note_id: params[:note_id])
     if parent.present?      
       parent.children.create(user_id: params[:user], note_id: params[:note_id], ownership: params[:ownership])
+      flash[:notice] = "You Successfully Shared your notes"
     end
-
+    
     redirect_to notes_path
   end
 
@@ -40,7 +41,8 @@ class NotesController < ApplicationController
 
   def permission_denied  
     if params[:user_id].present?
-      Permission.find_by(user_id: params[:user_id], note_id: params[:note_id]).destroy  
+      permission = Permission.find_by(user_id: params[:user_id], note_id: params[:note_id]).destroy 
+      flash[:alert] = "You Restricted #{permission.user.name} to Access you Note " 
     end
 
     redirect_to notes_path
