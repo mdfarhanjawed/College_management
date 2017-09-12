@@ -32,7 +32,7 @@ class NotesController < ApplicationController
   end
 
   def sharing
-    @sharing = Permission.where(user_id: current_user.id)
+    @sharing = Permission.where(user_id: current_user.id).where.not(parent_id: nil)
   end
 
   def shared_with
