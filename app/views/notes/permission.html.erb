@@ -20,7 +20,7 @@
                         <p class="shared-to">
                           <strong class="body-note">Note Shared to:</strong>               
                         </p>
-                        <%= select_tag "user", options_from_collection_for_select(User.all, "id", "name"), class: "select-style selectpicker form-control" %>
+                        <%= select_tag "user", options_from_collection_for_select(User.filter_user(@note), "id", "name"), class: "select-style selectpicker form-control" %>
                         <%= hidden_field_tag :note_id, @note.id %></br>
                     </div>
                     <% if @ownership.ownership == "owner" %>
