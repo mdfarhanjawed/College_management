@@ -35,4 +35,6 @@
   </div>
 </div>
 
-<%= render @note.comments %>
+<div id="comments" data-note-id="<%= @note.id %>">
+  <%= render @note.comments %>
+</div>
