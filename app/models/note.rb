@@ -1,9 +1,10 @@
 class Note < ApplicationRecord
   belongs_to :user
   has_many :permissions, dependent: :destroy
-
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+  has_many :comments, dependent: :destroy
+
 
   def all_tags=(name)
   	self.tags = name.split(',').map do |name|

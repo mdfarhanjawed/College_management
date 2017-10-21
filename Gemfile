@@ -15,6 +15,8 @@ gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'closure_tree'
+gem 'redis', '~> 3.3', '>= 3.3.1'
+gem 'better_errors', '~> 2.4'
 gem 'pry'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
