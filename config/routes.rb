@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :comments
   devise_for :users
   resources :notes
   resources :users
@@ -14,5 +13,8 @@ Rails.application.routes.draw do
 
   get 'tags', to: "notes#index"
   get 'landing', to: "homes#landing"
+
+  mount ActionCable.server => '/cable'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

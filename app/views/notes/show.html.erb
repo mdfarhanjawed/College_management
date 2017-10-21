@@ -3,7 +3,7 @@
 		<div class="main-note">
 			<div class="note-heading">
 				<h3 class="heading">Notes</h3>
-				<%= image_tag('notess.gif', height:' 30px', width: '30px')%>
+				<%= image_tag('notess.gif', height:' 30px', width: '30px') %>
 			</div>
 			<p class="note-common">
 			  <strong class="body-note">What is on Your Mind ?</strong>
@@ -35,6 +35,6 @@
   </div>
 </div>
 
-<div id="comments" data-note-id="<%= @note.id %>">
+<div id="comments" data-note-id="<%= @note.id %>" >
   <%= render @note.comments %>
 </div>
