@@ -1,12 +1,15 @@
 class NotesChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "note_#{params['note_id']}_channel"
+    stream_from "notes_#{params['note_id']}_channel"
   end
 
   def unsubscribed
   end
 
   def send_comment(data)
-    current_user.comments.create(content: data['comment'], blog_id: data['blog_id'])
+    current_user.comments.create(content: data['comment'], note_id: data['note_id'])
   end
 end
+
+
+
